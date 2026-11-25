@@ -3,19 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나의 첫 웹 페이지</title>
+  <title>정은서 · Python 백엔드 & AI 서비스</title>
+  <meta name="description" content="SSAFY 16기 정은서의 포트폴리오. 외부 API와 LLM을 연결해 실제로 동작하는 웹 서비스를 만듭니다.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><span class="logo">My Web Page</span></header>
-  <section class="hero">
-    <h1>Welcome to My Page</h1>
-    <p>GitHub Pages로 배포한 첫 번째 웹 페이지입니다.</p>
-  </section>
-  <section class="cards">
-    <div class="card">소개</div>
-    <div class="card">프로젝트</div>
-    <div class="card">연락처</div>
-  </section>
+  <header class="nav">
+    <a class="logo" href="#top">engmusae</a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">SSAFY 16기 · Python Backend &amp; AI Service</p>
+      <h1>외부 API와 LLM을 연결해<br><span>실제로 동작하는</span> 서비스를 만듭니다.</h1>
+      <p class="lead">안녕하세요, 정은서입니다. Django·FastAPI로 백엔드를 만들고, LangGraph 기반 Agent와 LLM을 붙여 사람의 조건을 이해하고 지켜 주는 서비스를 공부하고 있습니다.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">프로젝트 보기</a>
+        <a class="btn" href="https://github.com/engmusae" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+
+      <article class="feature">
+        <div class="feature-head">
+          <span class="badge">NEW · AI 코어 pjt_03</span>
+          <h3>맛집 플래너 — Agent 기반 식사 계획 서비스</h3>
+        </div>
+        <p>출발지·도착 기한·이동 시간·택시비 조건을 말하면 실제 식당과 자동차 이동 시간을 조회해, <strong>조건을 지킬 수 있는 식당만 근거와 함께</strong> 추천합니다. 후보가 없으면 조건을 바꿔 최대 3회 다시 계획하고, 고른 식당은 식사 계획으로 저장·관리할 수 있습니다.</p>
+        <div class="flow" aria-label="Agent 처리 흐름">
+          <span>analyze</span><i></i><span>plan</span><i></i><span>execute</span><i></i><span>judge</span><i></i><span>respond</span>
+        </div>
+        <ul class="tags">
+          <li>LangGraph</li><li>FastAPI</li><li>LLM</li><li>카카오 로컬·모빌리티 API</li><li>기상청 API</li><li>SQLite</li>
+        </ul>
+        <a class="link" href="https://github.com/engmusae/restaurant-planner" target="_blank" rel="noopener">저장소 보기 →</a>
+      </article>
+
+      <div class="grid">
+        <a class="card" href="https://github.com/engmusae/pjt_07" target="_blank" rel="noopener">
+          <span class="num">pjt_07</span>
+          <h3>AI 도서 추천 · 표지 생성</h3>
+          <p>취향 기반 도서 추천과 표지 이미지 생성·분석. Guardrail로 부적절한 요청을 차단하고 요청 유형을 자동 분류합니다.</p>
+          <ul class="tags"><li>Django</li><li>FastAPI</li><li>LLM</li><li>이미지 생성</li></ul>
+        </a>
+        <a class="card" href="https://github.com/engmusae/pjt_05" target="_blank" rel="noopener">
+          <span class="num">pjt_05</span>
+          <h3>댓글 증강 시스템</h3>
+          <p>토스증권 커뮤니티 댓글을 실시간으로 크롤링하고 LLM으로 정제·증강합니다.</p>
+          <ul class="tags"><li>Django</li><li>Selenium</li><li>LLM</li></ul>
+        </a>
+        <a class="card" href="https://github.com/engmusae/pjt_04" target="_blank" rel="noopener">
+          <span class="num">pjt_04</span>
+          <h3>ThRead 인증 · 도서 CRUD</h3>
+          <p>커스텀 User 모델 기반 회원가입·로그인·회원정보 수정과 도서 CRUD.</p>
+          <ul class="tags"><li>Django</li></ul>
+        </a>
+        <a class="card" href="https://github.com/engmusae/pjt_03" target="_blank" rel="noopener">
+          <span class="num">pjt_03</span>
+          <h3>ThRead 반응형 메인 페이지</h3>
+          <p>섹션별 컴포넌트를 반응형으로 구현하고 하나의 메인 페이지로 결합했습니다.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>Bootstrap</li></ul>
+        </a>
+        <a class="card" href="https://github.com/engmusae/pjt_02" target="_blank" rel="noopener">
+          <span class="num">pjt_02</span>
+          <h3>도서 데이터 수집 · TTS</h3>
+          <p>알라딘 Open API로 도서 데이터를 수집·가공하고 소개글을 음성으로 변환합니다.</p>
+          <ul class="tags"><li>Python</li><li>requests</li><li>gTTS</li></ul>
+        </a>
+        <a class="card" href="https://github.com/engmusae/aladin-book-data-analysis" target="_blank" rel="noopener">
+          <span class="num">data</span>
+          <h3>도서 데이터 분석</h3>
+          <p>알라딘 도서 JSON을 파싱해 출판사·카테고리별로 집계합니다.</p>
+          <ul class="tags"><li>Python</li></ul>
+        </a>
+      </div>
+    </section>
+
+    <section id="stack" class="section">
+      <h2>Tech Stack</h2>
+      <div class="stack">
+        <div>
+          <h3>Backend</h3>
+          <ul class="tags"><li>Python</li><li>Django</li><li>FastAPI</li><li>SQLite</li></ul>
+        </div>
+        <div>
+          <h3>AI · Agent</h3>
+          <ul class="tags"><li>LangGraph</li><li>LangChain</li><li>LLM API</li></ul>
+        </div>
+        <div>
+          <h3>Frontend</h3>
+          <ul class="tags"><li>HTML5</li><li>CSS3</li><li>Bootstrap</li></ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul class="tags"><li>Git</li><li>Selenium</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2>Contact</h2>
+      <p>함께 이야기 나누고 싶다면 편하게 연락 주세요.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:jes107444@gmail.com">jes107444@gmail.com</a>
+        <a class="btn" href="https://github.com/engmusae" target="_blank" rel="noopener">github.com/engmusae</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 정은서</footer>
 </body>
 </html>

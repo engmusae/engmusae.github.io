@@ -1,50 +1,229 @@
-/* 학습 목표
-   - 앞에서 배운 Media Query 를 내 페이지에 적용한 뒤 GitHub Pages 로 배포할 수 있다.
-   - 배포한 주소를 스마트폰으로 열어 반응형이 동작하는지 확인할 수 있다.
-   실습 TODO : 1개 */
+:root {
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --text: #1a1d21;
+  --muted: #5d6570;
+  --line: #e6e7e9;
+  --accent: #2f6fed;
+  --accent-soft: #eaf1fe;
+  --radius: 14px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111317;
+    --surface: #181b20;
+    --text: #eceef1;
+    --muted: #9aa3ae;
+    --line: #2a2e35;
+    --accent: #6b9bff;
+    --accent-soft: #1c2740;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Malgun Gothic", sans-serif;
   margin: 0;
-  color: #24292f;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  word-break: keep-all;
 }
 
-header {
-  padding: 20px 40px;
-  background-color: #dfe7f5;
-}
+a { color: inherit; text-decoration: none; }
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.hero {
-  padding: 60px 40px;
-  background-color: #f6f8fa;
-}
-
-.cards {
+/* 상단 메뉴 */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
-  /* 한 줄에 다 안 들어가면 다음 줄로 넘김 */
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px max(24px, calc((100vw - 1040px) / 2));
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo { font-weight: 700; letter-spacing: -0.02em; }
+
+.nav nav { display: flex; gap: 22px; font-size: 15px; color: var(--muted); }
+.nav nav a:hover { color: var(--text); }
+
+main { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* 첫 화면 */
+.hero { padding: 112px 0 88px; }
+
+.eyebrow {
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(32px, 5.4vw, 54px);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.lead {
+  max-width: 620px;
+  margin: 26px 0 0;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 15px;
+  font-weight: 600;
+  transition: border-color .2s, transform .2s;
+}
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* 섹션 공통 */
+.section { padding: 72px 0; border-top: 1px solid var(--line); }
+
+.section h2 {
+  margin: 0 0 32px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h3 { margin: 0; letter-spacing: -0.02em; }
+
+/* 대표 프로젝트 */
+.feature {
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.feature h3 { font-size: clamp(22px, 3vw, 28px); margin-top: 12px; }
+.feature > p { max-width: 760px; margin: 16px 0 0; color: var(--muted); font-size: 16.5px; }
+.feature strong { color: var(--text); }
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.flow {
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 40px;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 4px;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 13.5px;
+}
+.flow span {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+.flow i { width: 18px; height: 1px; background: var(--muted); opacity: .6; }
+
+.link { display: inline-block; margin-top: 22px; font-weight: 600; color: var(--accent); }
+.link:hover { text-decoration: underline; }
+
+/* 태그 */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; padding: 0; list-style: none; }
+.tags li {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* 프로젝트 카드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .card {
-  /* 기본(모바일): 카드 하나가 한 줄 전체 */
-  width: 100%;
-  /* 테두리(border)까지 width 안에 포함 */
-  box-sizing: border-box;
-  padding: 40px 0;
-  text-align: center;
-  border: 2px solid #d6d8dd;
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card h3 { font-size: 18px; margin-top: 8px; }
+.card p { margin: 10px 0 0; font-size: 15px; color: var(--muted); flex: 1; }
+
+.num {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--accent);
 }
 
-/* [실습 포인트/힌트]
-   - 지금은 PC 에서도 카드가 세로로 1개씩 쌓임
-   - 480px 이상에서 한 줄에 3개가 되도록 .card 의 width 를 바꾸기 (3개 + 간격 2개 => 30%)
-   - Media Query 실습 파일(01_media_query.css)의 @media 블록 모양 참고 */
-/* TODO 1: @media (min-width: 480px) 블록 작성 */
+/* 기술 스택 */
+.stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.stack h3 { font-size: 16px; }
+.stack .tags { margin-top: 12px; }
+
+/* 연락처 */
+.contact p { margin: 0; font-size: 18px; color: var(--muted); }
+.contact .actions { margin-top: 22px; }
+
+footer {
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .stack { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+  .nav nav { gap: 14px; font-size: 14px; }
+  .hero { padding: 72px 0 56px; }
+  .lead { font-size: 16.5px; }
+  .section { padding: 56px 0; }
+  .feature { padding: 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .flow i { width: 10px; }
+}
